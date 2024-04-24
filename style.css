@@ -1,3 +1,12 @@
+/* CSS BG */
+
+body{
+    background-color: #1E1E1E;
+}
+
+/* FIN CSS BG */
+
+
 /* CSS BOX GAME */
 .box-game {
     position: fixed;
@@ -9,6 +18,7 @@
     top: 0;
     padding: 20px; /* Ajout de padding pour éviter que les éléments ne soient collés aux bords */
     box-sizing: border-box; /* Inclure le padding dans la largeur */
+    z-index: 1;
 }
 
 .box-game h2 {
@@ -17,6 +27,7 @@
     left: 20px;
     margin: 0;
     color: white;
+    margin-bottom: 5%;
 }
 
 .money-container {
@@ -149,3 +160,75 @@
 
 
 /* FIN CSS BOX GAME */
+
+
+/* CSS Shop */
+
+.shop {
+    margin-top: 400px; /* Réglez la marge en fonction de vos besoins */
+}
+
+h1 {
+    position: relative;
+    color: white;
+    text-align: center;
+    margin: 0 auto; /* Centrer le texte horizontalement */
+}
+
+/* Définir la classe pour le conteneur de cartes */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Définir une grille responsive avec des cartes de largeur minimale de 300px */
+    gap: 20px; /* Espacement entre les cartes */
+    justify-content: center; /* Centrer les cartes horizontalement */
+}
+
+/* Styles pour les cartes */
+.card {
+    margin-top: 5%;
+    box-shadow: 0 4px 8px 0 rgb(51, 51, 51);
+    background-color: rgba(15, 15, 15, 0.4);
+    transition: 0.3s;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    backdrop-filter: blur(15px);
+}
+
+/* Styles pour le contenu des cartes */
+.container {
+    padding: 16px;
+}
+
+
+.bonus1 , .bonus2 , .bonus3 , .bonus4 , .bonus5 , .bonus6 , .bonus7 , .bonus8 {
+    width: 40%;
+    display: block;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 12%;
+}
+
+button{
+    position: absolute; /* Position absolue par rapport aux cartes */
+    bottom: 10px; /* Distance du bas de la carte */
+    left: 50%; /* Centrage horizontal */
+    transform: translateX(-50%); /* Centrage horizontal */
+    background-color: #1100ff4c;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+}
+
+
+button:hover {
+    background-color: #0400ff;
+  }
+
+
+/* FIN CSS Shop */
