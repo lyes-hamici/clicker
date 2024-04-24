@@ -1,11 +1,10 @@
 /* CSS BG */
-
-body{
+body {
     background-color: #1E1E1E;
+    margin: 0; /* Supprime les marges par défaut du body */
 }
 
 /* FIN CSS BG */
-
 
 /* CSS BOX GAME */
 .box-game {
@@ -50,10 +49,15 @@ body{
     height: 50px;
 }
 
-.ufo2 { right: calc(20px + (80px + 20px) * 1); 
-    top: 30px;}
-.ufo3 { right: calc(20px + (90px + 20px) * 2);
-    top: 20px; }
+.ufo2 { 
+    right: calc(20px + (80px + 20px) * 1); 
+    top: 30px;
+}
+
+.ufo3 { 
+    right: calc(20px + (90px + 20px) * 2);
+    top: 20px; 
+}
 
 .thanos {
     position: absolute;
@@ -63,8 +67,6 @@ body{
     height: 120px;
 }
 
-
-
 .player {
     position: absolute;
     bottom: 20px; 
@@ -73,24 +75,29 @@ body{
     height: 100px;
 }
 
-
-
-
-.scaled_cube1 { right: calc(20px + (40px + 20px) * 5);
+.scaled_cube1 { 
+    right: calc(20px + (40px + 20px) * 5);
     position: absolute;
     bottom: 20px; 
     width: 60px;
-    height: 50px; }
-.scaled_cube2 { right: calc(20px + (40px + 20px) * 6); 
+    height: 50px; 
+}
+
+.scaled_cube2 { 
+    right: calc(20px + (40px + 20px) * 6); 
     position: absolute;
     bottom: 40px;
     width: 60px;
-    height: 50px; }
-.scaled_cube3 { right: calc(20px + (40px + 20px) * 6);
+    height: 50px; 
+}
+
+.scaled_cube3 { 
+    right: calc(20px + (40px + 20px) * 6);
     position: absolute;
     bottom: 20px; 
     width: 60px;
-    height: 50px; }
+    height: 50px; 
+}
 
 .panda { 
     right: calc(20px + (50px + 20px) * 7);
@@ -100,7 +107,7 @@ body{
     height: 100px;
 } 
 
-.balle1 , .balle2 , .balle3{
+.balle1 , .balle2 , .balle3 {
     position: absolute;
     bottom: 20px;
     right: calc(20px + (50px + 20px) * 0);
@@ -120,12 +127,15 @@ body{
     width: 5%;
 }
 
-.balle2{ right: calc(20px + (30px + 20px) * 1); 
-        bottom: 22px;}
+.balle2 { 
+    right: calc(20px + (30px + 20px) * 1); 
+    bottom: 22px;
+}
 
-.balle3{right: calc(20px + (40px + 20px) * 2);
-        bottom: 25px; }
-
+.balle3 {
+    right: calc(20px + (40px + 20px) * 2);
+    bottom: 25px; 
+}
 
 .monster1 {
     position: absolute;
@@ -133,18 +143,18 @@ body{
     right: calc(20px + (50px + 20px) * 3);
 }
 
-.titan1 {position: absolute;
+.titan1 {
+    position: absolute;
     bottom: 20px;
     right: calc(20px + (50px + 20px) * 3);
-    width: 5%;}
-
+    width: 5%;
+}
 
 .poulpi1 {
     right: calc(20px + (50px + 20px) * 7);
     position: absolute;
     bottom: 20px; 
 }
-
 
 .slime1 {
     position: absolute;
@@ -154,16 +164,21 @@ body{
 }
 
 /* Réglez les positions des autres images en fonction de celles déjà positionnées */
-.scaled:nth-child(8) { right: calc(20px + (50px + 20px) * 8); }
-.scaled:nth-child(9) { right: calc(20px + (50px + 20px) * 9); }
-.scaled:nth-child(10) { right: calc(20px + (50px + 20px) * 10); }
+.scaled:nth-child(8) { 
+    right: calc(20px + (50px + 20px) * 8); 
+}
 
+.scaled:nth-child(9) { 
+    right: calc(20px + (50px + 20px) * 9); 
+}
+
+.scaled:nth-child(10) { 
+    right: calc(20px + (50px + 20px) * 10); 
+}
 
 /* FIN CSS BOX GAME */
 
-
 /* CSS Shop */
-
 .shop {
     margin-top: 400px; /* Réglez la marge en fonction de vos besoins */
 }
@@ -173,6 +188,7 @@ h1 {
     color: white;
     text-align: center;
     margin: 0 auto; /* Centrer le texte horizontalement */
+    margin-bottom: 20px; /* Ajoute une marge en bas */
 }
 
 /* Définir la classe pour le conteneur de cartes */
@@ -202,16 +218,17 @@ h1 {
     padding: 16px;
 }
 
-
+/* Styles pour les images des bonus */
 .bonus1 , .bonus2 , .bonus3 , .bonus4 , .bonus5 , .bonus6 , .bonus7 , .bonus8 {
-    width: 40%;
+    width: 40%; /* Taille maximale pour les images des bonus */
+    height: auto; /* Ajuster la hauteur automatiquement pour conserver les proportions */
     display: block;
     margin: auto;
     margin-top: 5%;
     margin-bottom: 12%;
 }
 
-button{
+button {
     position: absolute; /* Position absolue par rapport aux cartes */
     bottom: 10px; /* Distance du bas de la carte */
     left: 50%; /* Centrage horizontal */
@@ -225,10 +242,62 @@ button{
     width: 80%;
 }
 
-
 button:hover {
     background-color: #0400ff;
-  }
-
-
+}
 /* FIN CSS Shop */
+
+/* Media Queries pour la mise en page responsive */
+@media only screen and (max-width: 768px) {
+    .box-game {
+        height: auto; /* Ajuster la hauteur automatiquement */
+    }
+
+    .box-game h2 {
+        position: static; /* Remettre la position à statique pour le titre */
+        margin: 20px auto; /* Centrer le titre */
+    }
+
+    .money-container {
+        position: static; /* Remettre la position à statique pour le conteneur d'argent */
+        margin: 0 auto; /* Centrer le conteneur d'argent */
+    }
+
+    .ufo1, .ufo2, .ufo3, .thanos, .player, .scaled_cube1, .scaled_cube2, .scaled_cube3, .panda, .balle1, .balle2, .balle3, .spirit1, .spirit2, .monster1, .titan1, .poulpi1, .slime1, .scaled {
+        width: 10%; /* Cacher les éléments non essentiels sur les petits écrans */
+    }
+}
+
+
+@media only screen and (min-width: 1200px) {
+    .card-container {
+        grid-template-columns: repeat(4, 1fr); /* Afficher jusqu'à 4 cartes par ligne sur les grands écrans */
+    }
+
+    .card {
+        max-width: 250px; /* Réduire la largeur maximale des cartes pour les grands écrans */
+    }
+
+    .bonus1 , .bonus2 , .bonus3 , .bonus4 , .bonus5 , .bonus6 , .bonus7 , .bonus8 {
+        width: 40%; /* Taille maximale pour les images des bonus */
+        height: auto; /* Ajuster la hauteur automatiquement pour conserver les proportions */
+        display: block;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 12%;
+    }
+
+    button {
+        position: absolute; /* Position absolue par rapport aux cartes */
+        bottom: 10px; /* Distance du bas de la carte */
+        left: 50%; /* Centrage horizontal */
+        transform: translateX(-50%); /* Centrage horizontal */
+        background-color: #1100ff4c;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 80%;
+    }
+}
