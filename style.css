@@ -1,0 +1,303 @@
+/* CSS BG */
+body {
+    background-color: #1E1E1E;
+    margin: 0; /* Supprime les marges par défaut du body */
+}
+
+/* FIN CSS BG */
+
+/* CSS BOX GAME */
+.box-game {
+    position: fixed;
+    background-image: url("assets/img/bg_image.png");
+    height: 400px;
+    width: 100%;
+    background-size: contain;
+    left: 0;
+    top: 0;
+    padding: 20px; /* Ajout de padding pour éviter que les éléments ne soient collés aux bords */
+    box-sizing: border-box; /* Inclure le padding dans la largeur */
+    z-index: 1;
+}
+
+.box-game h2 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    margin: 0;
+    color: white;
+    margin-bottom: 5%;
+}
+
+.money-container {
+    position: absolute;
+    top: 20px;
+    left: calc(20px + 100px); /* Positionner l'image Money à 100px à droite du texte */
+}
+
+.money-container img {
+    width: 30px;
+    height: 30px;
+}
+
+/* style.css */
+.ufo1, .ufo2, .ufo3 {
+    position: absolute;
+    top: 20px;
+    right: calc(20px + (60px + 20px) * 0);
+    width: 70px;
+    height: 50px;
+}
+
+.ufo2 { 
+    right: calc(20px + (80px + 20px) * 1); 
+    top: 30px;
+}
+
+.ufo3 { 
+    right: calc(20px + (90px + 20px) * 2);
+    top: 20px; 
+}
+
+.thanos {
+    position: absolute;
+    bottom: 20px; 
+    right: calc(20px + (50px + 20px) * 9);
+    width: 100px;
+    height: 120px;
+}
+
+.player {
+    position: absolute;
+    bottom: 20px; 
+    left: 5%;
+    width: 100px;
+    height: 100px;
+}
+
+.scaled_cube1 { 
+    right: calc(20px + (40px + 20px) * 5);
+    position: absolute;
+    bottom: 20px; 
+    width: 60px;
+    height: 50px; 
+}
+
+.scaled_cube2 { 
+    right: calc(20px + (40px + 20px) * 6); 
+    position: absolute;
+    bottom: 40px;
+    width: 60px;
+    height: 50px; 
+}
+
+.scaled_cube3 { 
+    right: calc(20px + (40px + 20px) * 6);
+    position: absolute;
+    bottom: 20px; 
+    width: 60px;
+    height: 50px; 
+}
+
+.panda { 
+    right: calc(20px + (50px + 20px) * 7);
+    position: absolute;
+    bottom: 30px; 
+    width: 100px;
+    height: 100px;
+} 
+
+.balle1 , .balle2 , .balle3 {
+    position: absolute;
+    bottom: 20px;
+    right: calc(20px + (50px + 20px) * 0);
+    width: 2%;
+}
+
+.spirit1 {
+    position: absolute;
+    bottom: 80px;
+    right: calc(20px + (50px + 20px) * 0);
+}
+
+.spirit2 {
+    position: absolute;
+    top: 100px;
+    right: calc(20px + (60px + 20px) * 4);
+    width: 5%;
+}
+
+.balle2 { 
+    right: calc(20px + (30px + 20px) * 1); 
+    bottom: 22px;
+}
+
+.balle3 {
+    right: calc(20px + (40px + 20px) * 2);
+    bottom: 25px; 
+}
+
+.monster1 {
+    position: absolute;
+    bottom: 30px;
+    right: calc(20px + (50px + 20px) * 3);
+}
+
+.titan1 {
+    position: absolute;
+    bottom: 20px;
+    right: calc(20px + (50px + 20px) * 3);
+    width: 5%;
+}
+
+.poulpi1 {
+    right: calc(20px + (50px + 20px) * 7);
+    position: absolute;
+    bottom: 20px; 
+}
+
+.slime1 {
+    position: absolute;
+    bottom: 10px; 
+    right: calc(20px + (50px + 20px) * 8.5);
+    width: 3%;
+}
+
+/* Réglez les positions des autres images en fonction de celles déjà positionnées */
+.scaled:nth-child(8) { 
+    right: calc(20px + (50px + 20px) * 8); 
+}
+
+.scaled:nth-child(9) { 
+    right: calc(20px + (50px + 20px) * 9); 
+}
+
+.scaled:nth-child(10) { 
+    right: calc(20px + (50px + 20px) * 10); 
+}
+
+/* FIN CSS BOX GAME */
+
+/* CSS Shop */
+.shop {
+    margin-top: 400px; /* Réglez la marge en fonction de vos besoins */
+}
+
+h1 {
+    position: relative;
+    color: white;
+    text-align: center;
+    margin: 0 auto; /* Centrer le texte horizontalement */
+    margin-bottom: 20px; /* Ajoute une marge en bas */
+}
+
+/* Définir la classe pour le conteneur de cartes */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Définir une grille responsive avec des cartes de largeur minimale de 300px */
+    gap: 20px; /* Espacement entre les cartes */
+    justify-content: center; /* Centrer les cartes horizontalement */
+}
+
+/* Styles pour les cartes */
+.card {
+    margin-top: 5%;
+    box-shadow: 0 4px 8px 0 rgb(51, 51, 51);
+    background-color: rgba(15, 15, 15, 0.4);
+    transition: 0.3s;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    backdrop-filter: blur(15px);
+}
+
+/* Styles pour le contenu des cartes */
+.container {
+    padding: 16px;
+}
+
+/* Styles pour les images des bonus */
+.bonus1 , .bonus2 , .bonus3 , .bonus4 , .bonus5 , .bonus6 , .bonus7 , .bonus8 {
+    width: 40%; /* Taille maximale pour les images des bonus */
+    height: auto; /* Ajuster la hauteur automatiquement pour conserver les proportions */
+    display: block;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 12%;
+}
+
+button {
+    position: absolute; /* Position absolue par rapport aux cartes */
+    bottom: 10px; /* Distance du bas de la carte */
+    left: 50%; /* Centrage horizontal */
+    transform: translateX(-50%); /* Centrage horizontal */
+    background-color: #1100ff4c;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+}
+
+button:hover {
+    background-color: #0400ff;
+}
+/* FIN CSS Shop */
+
+/* Media Queries pour la mise en page responsive */
+@media only screen and (max-width: 768px) {
+    .box-game {
+        height: auto; /* Ajuster la hauteur automatiquement */
+    }
+
+    .box-game h2 {
+        position: static; /* Remettre la position à statique pour le titre */
+        margin: 20px auto; /* Centrer le titre */
+    }
+
+    .money-container {
+        position: static; /* Remettre la position à statique pour le conteneur d'argent */
+        margin: 0 auto; /* Centrer le conteneur d'argent */
+    }
+
+    .ufo1, .ufo2, .ufo3, .thanos, .player, .scaled_cube1, .scaled_cube2, .scaled_cube3, .panda, .balle1, .balle2, .balle3, .spirit1, .spirit2, .monster1, .titan1, .poulpi1, .slime1, .scaled {
+        width: 10%; /* Cacher les éléments non essentiels sur les petits écrans */
+    }
+}
+
+
+@media only screen and (min-width: 1200px) {
+    .card-container {
+        grid-template-columns: repeat(4, 1fr); /* Afficher jusqu'à 4 cartes par ligne sur les grands écrans */
+    }
+
+    .card {
+        max-width: 250px; /* Réduire la largeur maximale des cartes pour les grands écrans */
+    }
+
+    .bonus1 , .bonus2 , .bonus3 , .bonus4 , .bonus5 , .bonus6 , .bonus7 , .bonus8 {
+        width: 40%; /* Taille maximale pour les images des bonus */
+        height: auto; /* Ajuster la hauteur automatiquement pour conserver les proportions */
+        display: block;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 12%;
+    }
+
+    button {
+        position: absolute; /* Position absolue par rapport aux cartes */
+        bottom: 10px; /* Distance du bas de la carte */
+        left: 50%; /* Centrage horizontal */
+        transform: translateX(-50%); /* Centrage horizontal */
+        background-color: #1100ff4c;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 80%;
+    }
+}
