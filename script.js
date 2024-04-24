@@ -1,81 +1,59 @@
-class Item {
-  #name;
-  #price;
-  #possess;
-  #imagePath;
-  #description;
-  constructor(name, price, path, description) {
-    this.#name = name;
-    this.#price = price;
-    this.#possess = 0;
-    this.#imagePath = path;
-    this.#description = description;
-  }
-
-  incrementPrice(params) {
-    this.#price += params;
-  }
-  incrementPossess() {
-    this.#possess += 1;
-  }
-
-  get Possess() {
-    return this.#possess;
-  }
-  get Price() {
-    return this.#price;
-  }
-  get Name() {
-    return this.#name;
-  }
-  get ImagePath() {
-    return this.#imagePath;
-  }
-  get Description() {
-    return this.#description;
-  }
-
-  toJSON() {
-    return {
-      name: this.#name,
-      price: this.#price,
-      possess: this.#possess,
-      imagePath: this.#imagePath,
-      description: this.#description,
-    };
-  }
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-  var valueClick = localStorage.getItem("valueClick") || 1;
-  var valueAuto = localStorage.getItem("valueAuto") || 0;
-  var score = localStorage.getItem("score") || 0;
+  let valueClick = parseInt(localStorage.getItem("valueClick")) || 1;
+  let valueAuto = parseInt(localStorage.getItem("valueAuto")) || 0;
+  let score = parseInt(localStorage.getItem("score")) || 0;
 
-  var itemList =
-    JSON.parse(localStorage.getItem("itemList")) ||
-    [
-      // Exemple new Item("Cursor", 10, "images/cookie.png", "Auto clicker"),
-    ];
+  let boxGame = document.querySelector(".box-game");
+  let balance = document.getElementById("balance");
 
-  itemList = itemList.map(
-    (item) => new Item(item.name, item.price, item.imagePath, item.description)
-  );
+  // items variables ->
+  let items = JSON.parse(localStorage.getItem("items")) || [
+    { id: "card-1", price: 10, level: 0 },
+    { id: "card-2", price: 20, level: 0 },
+  ];
 
-  // document should be changed to the id of the div
-  //   document.getElementById("")
-  document.addEventListener("click", addToScore);
+  //  items.forEach((item) => {
+  //    let card = document.getElementById(item.id);
+  //    card.querySelector(".price").innerHTML = item.price;
+  //    card.querySelector(".level").innerHTML = item.possessed;
+  //  });
+
+  boxGame.addEventListener("click", addToScore);
 
   setInterval(function () {
     score += valueAuto;
+    balance.innerHTML = score;
     localStorage.setItem("score", score);
   }, 1000);
 
   function addToScore() {
     score += valueClick;
+    balance.innerHTML = score;
     localStorage.setItem("score", score);
   }
 
-//   Update local storage info every time the user leaves the page
+  document
+    .querySelector(".card-container")
+    .addEventListener("click", function (event) {
+      if (event.target.tagName === "BUTTON") {
+        let card = event.target.closest(".card");
+        let item = items.find((item) => item.id === card.id);
+        if (score >= item.price) {
+          score -= item.price;
+          item.level++;
+          item.price *= 2; // or however you want to increase the price
+          // update the score display and the card display
+          balance.innerHTML = score;
+          card.querySelector(".price").innerHTML = item.price;
+          card.querySelector(".level").innerHTML = item.level;
+          // save everything to localStorage
+          localStorage.setItem("score", score);
+          localStorage.setItem("items", JSON.stringify(items));
+        }
+      }
+    });
+
+  // Update local storage info every time the user leaves the page
   window.addEventListener("beforeunload", function () {
     localStorage.setItem("valueClick", valueClick);
     localStorage.setItem("valueAuto", valueAuto);

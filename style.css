@@ -8,6 +8,7 @@ body {
 
 /* CSS BOX GAME */
 .box-game {
+    user-select: none;
     position: fixed;
     background-image: url("assets/img/bg_image.png");
     height: 400px;
