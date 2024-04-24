@@ -219,6 +219,56 @@ h1 {
     padding: 16px;
 }
 
+.card-container .price {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.container-price-level {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-price-level img {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+.card-container .level {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: right; /* Align the text to the right */
+}
+
+.card-container .price {
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.container-price-level {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-price-level img {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+}
+
+.card-container .level {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: right; /* Align the text to the right */
+}
+
 /* Styles pour les images des bonus */
 .bonus1 , .bonus2 , .bonus3 , .bonus4 , .bonus5 , .bonus6 , .bonus7 , .bonus8 {
     width: 40%; /* Taille maximale pour les images des bonus */
@@ -243,9 +293,34 @@ button {
     width: 80%;
 }
 
+.tooltip-content {
+    visibility: hidden;
+    width: 200px;
+    background-color: #1100ff;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.3s;
+}
+
+.card-container-card:hover .tooltip-content {
+
+    visibility: visible;
+
+}
+
+
 button:hover {
     background-color: #0400ff;
 }
+
+
 /* FIN CSS Shop */
 
 /* Media Queries pour la mise en page responsive */
