@@ -320,6 +320,10 @@ button:hover {
     background-color: #0400ff;
 }
 
+.custom-cursor {
+  cursor: url('assets/cursors/icons8-cursor-100.png'), auto;
+}
+
 
 /* FIN CSS Shop */
 

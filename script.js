@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const DEFAULT_VALUE_CLICK = 1;
   const DEFAULT_VALUE_AUTO = 0;
   const DEFAULT_SCORE = 0;
-  const INTERVAL_MS = 5000;
+  const DEFAULT_INTERVAL_MS = 5000;
   const PRICE_INCREASE_FACTOR = 2;
 
   let valueClick =
@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
   let valueAuto =
     parseInt(localStorage.getItem("valueAuto")) || DEFAULT_VALUE_AUTO;
   let score = parseInt(localStorage.getItem("score")) || DEFAULT_SCORE;
+  let intervalMS =
+    parseInt(localStorage.getItem("intervalMS")) || DEFAULT_INTERVAL_MS;
 
   let boxGame = document.querySelector(".box-game");
   let balance = document.getElementById("balance");
@@ -32,7 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(function () {
     score += valueAuto;
     updateScoreDisplay();
-  }, 1000);
+    console.log("score", score);
+    console.log("valueAuto", valueAuto);
+    console.log("valueClick", valueClick);
+    console.log("intervalMS", intervalMS);
+  }, intervalMS);
 
   function addToScore() {
     score += valueClick;
@@ -46,6 +52,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateValueClick() {
     localStorage.setItem("valueClick", valueClick);
+  }
+
+  function updateIntervalMS() {
+    localStorage.setItem("intervalMS", intervalMS);
   }
 
   function updateValueAuto() {
@@ -88,31 +98,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateBuff(item) {
     if (item.id === "card-1") {
-      if (INTERVAL_MS > 110) {
-      INTERVAL_MS -= 100;
+      if (intervalMS > 110) {
+        intervalMS -= 100;
+        updateIntervalMS();
       }
     } else if (item.id === "card-2") {
       valueClick *= 2;
     } else if (item.id === "card-3") {
-      valueAuto *= 2;
+      if (valueAuto > 0) {
+        valueAuto *= 2;
+      }
+      else {
+        valueAuto = 1;
+      }
     } else if (item.id === "card-4") {
       score *= 2;
     } else if (item.id === "card-5") {
       // Temporary bonus
-    const BONUS_DURATION_MS = 10000 * item.level / 2;
-    const BONUS_MULTIPLIER = 2 * item.level / 2;
+      const BONUS_DURATION_MS = (10000 * item.level) / 2;
+      const BONUS_MULTIPLIER = (2 * item.level) / 2;
 
-    score *= BONUS_MULTIPLIER;
-    setTimeout(function () {
-      score /= BONUS_MULTIPLIER;
-    }, BONUS_DURATION_MS);
-      
+      score *= BONUS_MULTIPLIER;
+      setTimeout(function () {
+        score /= BONUS_MULTIPLIER;
+      }, BONUS_DURATION_MS);
     } else if (id === "card-6") {
-// Reinitialisation
+      // Reinitialisation
     } else if (id === "card-7") {
-      // Click personalisation
+      // Click
+      document.body.classList.add("custom-cursor");
     } else if (id === "card-8") {
-      // ask for help
     }
   }
 
@@ -126,6 +141,26 @@ document.addEventListener("DOMContentLoaded", function () {
     updateValueAuto();
   }
 
+  function resetGame() {
+    valueClick = DEFAULT_VALUE_CLICK;
+    valueAuto = DEFAULT_VALUE_AUTO;
+    score = DEFAULT_SCORE;
+    items = [
+      { id: "card-1", price: 10, level: 0 },
+      { id: "card-2", price: 20, level: 0 },
+      { id: "card-3", price: 30, level: 0 },
+      { id: "card-4", price: 40, level: 0 },
+      { id: "card-5", price: 50, level: 0 },
+      { id: "card-6", price: 60, level: 0 },
+      { id: "card-7", price: 70, level: 0 },
+      { id: "card-8", price: 80, level: 0 },
+    ];
+    updateScoreDisplay();
+    items.forEach(updateCardDisplay);
+    updateItemList();
+    updateValueAuto();
+    updateValueClick();
+  }
 
   // Update local storage info every time the user leaves the page
   window.addEventListener("beforeunload", function () {
