@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const DEFAULT_VALUE_CLICK = 1;
   const DEFAULT_VALUE_AUTO = 0;
   const DEFAULT_SCORE = 0;
-  const INTERVAL_MS = 1000;
+  const INTERVAL_MS = 5000;
   const PRICE_INCREASE_FACTOR = 2;
 
   let valueClick =
@@ -82,19 +82,37 @@ document.addEventListener("DOMContentLoaded", function () {
     item.price *= PRICE_INCREASE_FACTOR;
     updateScoreDisplay();
     updateCardDisplay(item);
-    updateBuff(item.id);
+    updateBuff(item);
     updateItemList();
   }
 
-  function updateBuff(id) {
-    if (id === "card-1") {
-    } else if (id === "card-2") {
-    } else if (id === "card-3") {
-    } else if (id === "card-4") {
-    } else if (id === "card-5") {
+  function updateBuff(item) {
+    if (item.id === "card-1") {
+      if (INTERVAL_MS > 110) {
+      INTERVAL_MS -= 100;
+      }
+    } else if (item.id === "card-2") {
+      valueClick *= 2;
+    } else if (item.id === "card-3") {
+      valueAuto *= 2;
+    } else if (item.id === "card-4") {
+      score *= 2;
+    } else if (item.id === "card-5") {
+      // Temporary bonus
+    const BONUS_DURATION_MS = 10000 * item.level / 2;
+    const BONUS_MULTIPLIER = 2 * item.level / 2;
+
+    score *= BONUS_MULTIPLIER;
+    setTimeout(function () {
+      score /= BONUS_MULTIPLIER;
+    }, BONUS_DURATION_MS);
+      
     } else if (id === "card-6") {
+// Reinitialisation
     } else if (id === "card-7") {
+      // Click personalisation
     } else if (id === "card-8") {
+      // ask for help
     }
   }
 
