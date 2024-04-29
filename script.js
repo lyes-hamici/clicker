@@ -122,13 +122,13 @@ document.addEventListener("DOMContentLoaded", function () {
       setTimeout(function () {
         score /= BONUS_MULTIPLIER;
       }, BONUS_DURATION_MS);
-    } else if (id === "card-6") {
+    } else if (item.id === "card-6") {
       // Reinitialisation
       resetGame();
-    } else if (id === "card-7") {
+    } else if (item.id === "card-7") {
       // Click
       document.body.classList.add("custom-cursor");
-    } else if (id === "card-8") {
+    } else if (item.id === "card-8") {
     }
   }
 
