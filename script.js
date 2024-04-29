@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+  //========================Default values========================//
   const DEFAULT_VALUE_CLICK = 1;
   const DEFAULT_VALUE_AUTO = 0;
   const DEFAULT_SCORE = 0;
   const DEFAULT_INTERVAL_MS = 5000;
   const PRICE_INCREASE_FACTOR = 2;
 
+  //=====================Loading variables from localstorage or setting on zero=====================//
   let valueClick =
     parseInt(localStorage.getItem("valueClick")) || DEFAULT_VALUE_CLICK;
   let valueAuto =
@@ -13,10 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let intervalMS =
     parseInt(localStorage.getItem("intervalMS")) || DEFAULT_INTERVAL_MS;
 
-  let boxGame = document.querySelector(".box-game");
-  let balance = document.getElementById("balance");
-
-  // items variables ->
+  // items variables -> id, price, level
   let items = JSON.parse(localStorage.getItem("items")) || [
     { id: "card-1", price: 10, level: 0 },
     { id: "card-2", price: 20, level: 0 },
@@ -28,8 +27,18 @@ document.addEventListener("DOMContentLoaded", function () {
     { id: "card-8", price: 80, level: 0 },
   ];
 
+  //========================DOM elements========================//
+  let boxGame = document.querySelector(".box-game");
+  let balance = document.getElementById("balance");
+
   items.forEach(updateCardDisplay);
   boxGame.addEventListener("click", addToScore);
+
+  document
+    .querySelector(".card-container")
+    .addEventListener("click", handleCardContainerClick);
+
+  //===============Functions================//
 
   setInterval(function () {
     score += valueAuto;
@@ -45,36 +54,11 @@ document.addEventListener("DOMContentLoaded", function () {
     updateScoreDisplay();
   }
 
-  function updateScoreDisplay() {
-    balance.innerHTML = score;
-    localStorage.setItem("score", score);
-  }
-
-  function updateValueClick() {
-    localStorage.setItem("valueClick", valueClick);
-  }
-
-  function updateIntervalMS() {
-    localStorage.setItem("intervalMS", intervalMS);
-  }
-
-  function updateValueAuto() {
-    localStorage.setItem("valueAuto", valueAuto);
-  }
-
   function updateCardDisplay(item) {
     const card = document.getElementById(item.id);
     card.querySelector(".price-text").textContent = item.price;
     card.querySelector(".level").textContent = item.level;
   }
-
-  function updateItemList() {
-    localStorage.setItem("items", JSON.stringify(items));
-  }
-
-  document
-    .querySelector(".card-container")
-    .addEventListener("click", handleCardContainerClick);
 
   function handleCardContainerClick(event) {
     if (event.target.tagName === "BUTTON") {
@@ -107,8 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (item.id === "card-3") {
       if (valueAuto > 0) {
         valueAuto *= 2;
-      }
-      else {
+      } else {
         valueAuto = 1;
       }
     } else if (item.id === "card-4") {
@@ -162,6 +145,31 @@ document.addEventListener("DOMContentLoaded", function () {
     updateValueAuto();
     updateValueClick();
   }
+
+  //============Local storage update============//
+
+  function updateScoreDisplay() {
+    balance.innerHTML = score;
+    localStorage.setItem("score", score);
+  }
+
+  function updateValueClick() {
+    localStorage.setItem("valueClick", valueClick);
+  }
+
+  function updateIntervalMS() {
+    localStorage.setItem("intervalMS", intervalMS);
+  }
+
+  function updateValueAuto() {
+    localStorage.setItem("valueAuto", valueAuto);
+  }
+  
+  function updateItemList() {
+    localStorage.setItem("items", JSON.stringify(items));
+  }
+
+
 
   // Update local storage info every time the user leaves the page
   window.addEventListener("beforeunload", function () {
