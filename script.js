@@ -43,10 +43,6 @@ document.addEventListener("DOMContentLoaded", function () {
   setInterval(function () {
     score += valueAuto;
     updateScoreDisplay();
-    console.log("score", score);
-    console.log("valueAuto", valueAuto);
-    console.log("valueClick", valueClick);
-    console.log("intervalMS", intervalMS);
   }, intervalMS);
 
   function addToScore() {
